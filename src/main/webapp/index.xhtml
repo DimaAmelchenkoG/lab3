@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+    <title>Index</title>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputScript library="js" name="clock.js" target="body"/>
+
+</h:head>
+<h:body>
+    <div class="name">Amelchenko Dima P3232</div>
+    <div class="var">Variant: 1101</div>
+    <div>
+        <div>
+        <p>Time now:</p>
+        <p id="time_now"></p>
+        </div>
+    </div>
+
+    <h:form id="form_to_main">
+        <h:commandButton value="Go to main page" action="go_to_main"></h:commandButton>
+    </h:form>
+
+
+
+    Hello, world!, #{pointCollectionBean.getName()}
+
+</h:body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <title>Main</title>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputScript library="js" name="clock.js" target="body"/>
+    <h:outputScript library="js" name="myCanvas.js" target="body"/>
+    <h:outputScript library="js" name="tbody.js" target="body"/>
+    <h:outputScript library="js" name="canvas.js" target="body"/>
+    <h:outputScript library="js" name="click.js" target="body"/>
+    <h:outputScript library="js" name="valid.js" target="body"/>
+
+</h:head>
+<h:body>
+    <div class="name">Amelchenko Dima P3232</div>
+
+    <div id="N1" class="line">
+        <canvas class="myCanvas" id = 'canvas' width="500" height="500"></canvas>
+        <div id="R1" class="R">R</div>
+        <div id="R2" class="R">R/2</div>
+        <div id="R3" class="R">R</div>
+        <div id="R4" class="R">R/2</div>
+    </div>
+
+    <div id="N2" class="line">
+        <div id="inputs" class="line1">
+            <h:form id="mainForm">
+                <div id="x-block">
+                    <div class="text">Choose X:</div>
+                    <h:inputText id="inputX" value="#{pointCollectionBean.getNewPoint().x}"></h:inputText>
+                </div>
+                <div id="y-block">
+                    <div class="text">Choose Y:</div>
+                    <h:inputText id="inputY" value="#{pointCollectionBean.getNewPoint().y}"></h:inputText>
+                </div>
+                <div id="r-block">
+                    <div class="text">Choose R:</div>
+                    <h:selectOneMenu id="select" value="#{pointCollectionBean.getNewPoint().r}">
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+                        <f:selectItem itemValue="4" itemLabel="4"/>
+                        <f:selectItem itemValue="5" itemLabel="5"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="buttons" id="button">
+                    <h:commandButton id="Enter" value="Enter" action="#{pointCollectionBean.addPoint()}">
+                        <f:ajax execute="mainForm" render="maintable"/>
+                    </h:commandButton>
+                    <h:commandButton id="Clean" value="Clean" action="#{pointCollectionBean.clean()}">
+                        <f:ajax execute="mainForm" render="maintable"/>
+                    </h:commandButton>
+                </div>
+            </h:form>
+        </div>
+
+        <div class="line1">
+            <h:dataTable value="#{pointCollectionBean.getPoints()}" var="point" id="maintable" border="1">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    <h:outputText value="#{point.getX()}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    <h:outputText value="#{point.getY()}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    <h:outputText value="#{point.r}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Check</f:facet>
+                    <h:outputText value="#{point.getTarget()}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time now</f:facet>
+                    <h:outputText value="#{point.getDate()}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time</f:facet>
+                    <h:outputText value="#{point.getTime()}"/>
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </div>
+
+    <div class="inviz">
+        <h:form id="InvizForm">
+            <div id="inputs3">
+                <div class="in">
+                    <div class="text">Изменение Y: Text</div>
+                    <div class="inp">
+
+                        <h:inputText id="yInput3" value="#{pointCollectionBean.getNewPoint().y}"></h:inputText>
+                    </div>
+                </div>
+                <div class="in">
+                    <div class="text">Изменение X: Button</div>
+                    <div class="inp">
+
+                        <h:inputText id="r-value3" value="#{pointCollectionBean.getNewPoint().r}"></h:inputText>
+                    </div>
+                </div>
+                <div class="in">
+                    <div class="text">Изменение R: Radio</div>
+                    <div class="inp">
+                        <h:inputText id="x-value3" value="#{pointCollectionBean.getNewPoint().x}"></h:inputText>
+                    </div>
+                </div>
+            </div>
+            <p:remoteCommand name="graphClick" action="#{pointCollectionBean.addPoint()}" update="maintable"></p:remoteCommand>
+        </h:form>
+
+    </div>
+</h:body>
+</html>
