@@ -16,20 +16,18 @@
 <h:body>
     <div class="name">Amelchenko Dima P3232</div>
     <div class="var">Variant: 1101</div>
-    <div>
-        <div>
-        <p>Time now:</p>
+    <div class="clock">
+
+        <p id="textTime">Time now:</p>
         <p id="time_now"></p>
-        </div>
+
     </div>
 
     <h:form id="form_to_main">
-        <h:commandButton value="Go to main page" action="go_to_main"></h:commandButton>
+        <h:commandButton id="buttonToMain" value="Go to main page" action="go_to_main"></h:commandButton>
     </h:form>
 
 
-
-    Hello, world!, #{pointCollectionBean.getName()}
 
 </h:body>
 </html>

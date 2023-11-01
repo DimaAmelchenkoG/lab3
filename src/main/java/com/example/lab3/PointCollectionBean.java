@@ -1,20 +1,25 @@
 package com.example.lab3;
 
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Named
-@ApplicationScoped
-public class PointCollectionBean {
+
+
+@SessionScoped
+public class PointCollectionBean implements Serializable {
 
     private Point newPoint = new Point();
     private List<Point> points = new ArrayList<Point>();
     public Point getNewPoint(){
-        System.out.println("GET NEW POINT");
+       // System.out.println("GET NEW POINT");
         return newPoint;
     }
 
@@ -25,12 +30,23 @@ public class PointCollectionBean {
         long t1 = System.nanoTime();
         PointCreater pointCreater = new PointCreater();
         newPoint = pointCreater.createPoint(newPoint, t1);
-        points.add(newPoint);
+        CheckValid checkValid = new CheckValid();
+        if (checkValid.checkAll(newPoint) == true) {
+            points.add(newPoint);
+        }
         //
         //
-         HibernateUtils.getSessionFactory();
+         //HibernateUtils.getSessionFactory();
         //HibernateUtils.buildSessionFactory();
         //MyDataBase.getInstance().makeBigAdd(newPoint);
+        if (false) {
+            Session session = null;
+            Transaction transaction;
+            session = HibernateUtils.getSessionFactory().openSession();
+            transaction = session.getTransaction();
+            session.beginTransaction();
+            session.persist(newPoint);
+        }
         newPoint = new Point();
     }
 

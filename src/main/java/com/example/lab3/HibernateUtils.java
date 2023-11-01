@@ -11,7 +11,7 @@ public class HibernateUtils {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+                Configuration configuration = new Configuration().configure();
                 sessionFactory =  configuration.addAnnotatedClass(Point.class).buildSessionFactory();
             } catch (Exception e) {
                 System.out.println("Исключение!" + e);

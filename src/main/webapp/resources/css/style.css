@@ -105,3 +105,29 @@ table{
 .R{
     display: none;
 }
+
+
+.clock{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 70px;
+}
+
+#form_to_main{
+    text-align: center;
+}
+
+#form_to_main\:buttonToMain{
+    height: 100px;
+    width: 300px;
+    font-size: 30px;
+    background: aqua;
+}
+#textTime{
+    margin-bottom: 10px;
+}
+
+#time_now{
+    margin-top: 10px;
+}

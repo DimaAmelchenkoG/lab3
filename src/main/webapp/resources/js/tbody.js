@@ -1,4 +1,4 @@
-
+document.getElementById("mainForm:inputY").value = 0.0;
 const observer = new MutationObserver((mutations, observer) => {
     for(let mutation of mutations) {
         if (mutation.target.classList.contains("line1")) {

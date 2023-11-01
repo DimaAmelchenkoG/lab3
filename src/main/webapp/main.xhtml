@@ -40,7 +40,12 @@
                 </div>
                 <div id="y-block">
                     <div class="text">Choose Y:</div>
-                    <h:inputText id="inputY" value="#{pointCollectionBean.getNewPoint().y}"></h:inputText>
+                    <h:outputText id="output" value="Y = " styleClass="x-value"/>
+                    <h:inputHidden id="inputY" value="#{pointCollectionBean.getNewPoint().y}">
+                    </h:inputHidden>
+                    <p:slider for="inputY" display="output" minValue="-4" maxValue="4" range="1" step="0.1"
+                              displayTemplate="Y = {value}"/>
+                    <h:message for="inputY" id="x-error-field" showDetail="true" styleClass="error"/>
                 </div>
                 <div id="r-block">
                     <div class="text">Choose R:</div>

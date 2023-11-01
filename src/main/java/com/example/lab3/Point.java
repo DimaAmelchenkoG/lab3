@@ -1,21 +1,27 @@
 package com.example.lab3;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalTime;
 
 
-@ApplicationScoped
+@SessionScoped
 @Entity
 @Table(name = "tablePoint")
 public class Point implements Serializable {
 
+    public Point(){}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     @Column(name = "x", nullable = false)
     private String x;
     @Column(name = "y", nullable = false)
-    private String y;
+    private Double y;
     @Column(name = "r", nullable = false)
     private String r;
 
@@ -26,10 +32,6 @@ public class Point implements Serializable {
     private LocalTime date;
     @Column(name = "time", nullable = false)
     private String  time;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
 
 
@@ -41,11 +43,11 @@ public class Point implements Serializable {
         this.x = x;
     }
 
-    public String getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(Double y) {
         this.y = y;
     }
 

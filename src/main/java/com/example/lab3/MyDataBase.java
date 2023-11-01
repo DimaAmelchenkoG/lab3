@@ -3,7 +3,7 @@ package com.example.lab3;
 import java.sql.*;
 
 public class MyDataBase {
-    private static final String DB_URL = "jdbc:postgresql://pg:5432/studs";
+    private static final String DB_URL = "jdbc:postgresql://127.0.0.1:40543/studs";
     private static final String USER = "s336358";
     private static final String PASS = "nPmz.8121";
     private static final MyDataBase INSTANCE = new MyDataBase();

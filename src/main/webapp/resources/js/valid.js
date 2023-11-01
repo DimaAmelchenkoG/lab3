@@ -1,6 +1,5 @@
-alert("Valid");
-let isYValid = true;
-let isXValid = true;
+let isYValid = true ;
+let isXValid = false;
 let isRValid = true;
 
 
@@ -12,9 +11,8 @@ ButtonOn();
 
 yValue.addEventListener("keyup", function () {
     var str = (String(yValue.value)).replace(",", ".");
-    isYValid = str < 3 && str > -3 && !isNaN(str) && (str.trim().length !==0);
+    isYValid = str < 4 && str > -4 && !isNaN(str) && (str.trim().length !==0);
 
-    isYValid = true;
     isFormReadyToSent();
 })
 
@@ -36,7 +34,6 @@ function isFormReadyToSent(){
    // const form = document.getElementById("form");
    // const formData = new FormData(form);
 
-    alert("Check");
     if (!isYValid || !isXValid || !isRValid){
         ButtonOn();
         return;
