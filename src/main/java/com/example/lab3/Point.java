@@ -4,33 +4,32 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 
 
 @SessionScoped
 @Entity
-@Table(name = "tablePoint")
+@Table(name = "tablepoint")
 public class Point implements Serializable {
 
     public Point(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "point_id", nullable = false)
     private Long id;
 
-    @Column(name = "x", nullable = false)
+    @Column(name = "point_x", nullable = false)
     private String x;
-    @Column(name = "y", nullable = false)
+    @Column(name = "point_y", nullable = false)
     private Double y;
-    @Column(name = "r", nullable = false)
+    @Column(name = "point_r", nullable = false)
     private String r;
 
 
-    @Column(name = "target", nullable = false)
+    @Column(name = "point_target", nullable = false)
     private String target;
-    @Column(name = "date", nullable = false)
-    private LocalTime date;
-    @Column(name = "time", nullable = false)
+    @Column(name = "point_time_now", nullable = false)
+    private String date;
+    @Column(name = "point_time", nullable = false)
     private String  time;
 
 
@@ -74,11 +73,11 @@ public class Point implements Serializable {
         this.target = target;
     }
 
-    public LocalTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

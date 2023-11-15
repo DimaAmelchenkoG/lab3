@@ -3,8 +3,6 @@ package com.example.lab3;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -39,14 +37,8 @@ public class PointCollectionBean implements Serializable {
          //HibernateUtils.getSessionFactory();
         //HibernateUtils.buildSessionFactory();
         //MyDataBase.getInstance().makeBigAdd(newPoint);
-        if (false) {
-            Session session = null;
-            Transaction transaction;
-            session = HibernateUtils.getSessionFactory().openSession();
-            transaction = session.getTransaction();
-            session.beginTransaction();
-            session.persist(newPoint);
-        }
+        ConnectDB connectDB = new ConnectDB();
+        connectDB.add(newPoint);
         newPoint = new Point();
     }
 
@@ -61,6 +53,8 @@ public class PointCollectionBean implements Serializable {
     public PointCollectionBean(){}
 
     public void clean(){
+        ConnectDB connectDB = new ConnectDB();
+        connectDB.clear();
         points.clear();
     }
 
