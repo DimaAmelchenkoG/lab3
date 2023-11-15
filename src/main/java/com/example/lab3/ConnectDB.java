@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 public class ConnectDB {
 
     public void add(Point point){
-        if (true) {
             Session session = null;
             Transaction transaction;
             session = HibernateUtils.getSessionFactory().openSession();
@@ -14,11 +13,9 @@ public class ConnectDB {
             session.beginTransaction();
             session.persist(point);
             transaction.commit();
-        }
     }
 
     public void clear(){
-        if (true) {
             Session session = null;
             Transaction transaction;
             session = HibernateUtils.getSessionFactory().openSession();
@@ -26,6 +23,5 @@ public class ConnectDB {
             session.beginTransaction();
             session.createNativeQuery("delete from tablepoint").executeUpdate();
             transaction.commit();
-        }
     }
 }
